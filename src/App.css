@@ -1,8 +1,39 @@
 .App {
   text-align: center;
-  background-color:bisque;
-}
-.dev {
-  color: #000;
+  background-color:rgb(83, 223, 223);
 }
 
+.AAA{
+  background-color: red;
+  border: 10px solid lightblue;
+  border-radius: 20px;
+  background-color: rgb(15, 89, 89);
+  padding: 10px;
+  display: grid ;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 50px;
+  
+}
+
+
+.Homepage_articleList{
+  border: 10px solid lightblue;
+  border-radius: 20px;
+  background-color: rgb(15, 89, 89);
+  padding: 10px;
+  display: grid ;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 50px;
+}
+.articleCard{
+  border: 10px solid lightblue;
+
+    border-radius: 40px;
+
+  background-color: aquamarine;
+  display: grid ;
+
+}
+.rapper{
+  width: 1170px;
+}
