@@ -7,25 +7,21 @@ import ArticleCard from "./ArticleCard";
 export default function ArticleList({topic}){
     const [articles, setArticles] = useState([]);
     const [isLoading, setisLoding] = useState(true);
-   
     useEffect(() => {
          setisLoding(true);
-        
         console.log("component mounted")
 
         api.getArticles(topic).then((data) => {
-
             setArticles(data)
+
          setisLoding(false);
 
         })
     }, [topic]);
     return articles.map(({article_id, topic, author, body, created_at}) => {
         
-
         return (
       
-
             <section className="Homepage_articleList">
             
                 <ArticleCard 

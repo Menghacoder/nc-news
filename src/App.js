@@ -1,12 +1,14 @@
-import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Link, useParams } from 'react-router-dom';
 import Title from './components/Title';
 import ArticleList from './components/ArticleList';
 import './App.css';
+
 import TopicArticles from './components/TopicArticles';
 import { useState } from 'react';
 
 function App() {
   const [topic, setTopic] = useState();
+  console.log(topic)
   return (
     <BrowserRouter>
     <div className="App">
@@ -14,12 +16,13 @@ function App() {
 
       <section >
       <ul>
-      <h2><Link to="/articles">View Articles</Link></h2>
+      <h2><Link to="/articles">View topics</Link></h2>
       </ul>
       </section>
       <br/>
       <Routes>
-      <Route path='/articles' element = {<TopicArticles/>} />
+      <Route path='/articles' element = {<TopicArticles setTopic={setTopic}/>} />
+      
       <Route path='/topics/:topic' element = {<TopicArticles setTopic={setTopic}/>} />
 
       </Routes>
