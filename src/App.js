@@ -5,6 +5,7 @@ import './App.css';
 
 import TopicArticles from './components/TopicArticles';
 import { useState } from 'react';
+import SingleArticleCard from './components/SingleArticleCard';
 
 function App() {
   const [topic, setTopic] = useState();
@@ -22,12 +23,13 @@ function App() {
       <br/>
       <Routes>
       <Route path='/articles' element = {<TopicArticles setTopic={setTopic}/>} />
-      
-      <Route path='/topics/:topic' element = {<TopicArticles setTopic={setTopic}/>} />
+      <Route path='/' element = {<ArticleList/>}/>
+      <Route path='/topics/:topic' element = {<ArticleList/>} />
+      <Route path='/articles/:article_id' element= {<SingleArticleCard/>}/>
 
       </Routes>
 
-      <ArticleList topic={topic}/>
+      {/* <ArticleList topic={topic}/> */}
     </div>
     </BrowserRouter>
   );

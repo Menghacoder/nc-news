@@ -1,29 +1,37 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import * as api from "../api";
 import ArticleCard from "./ArticleCard";
+import SingleArticleCard from "./SingleArticleCard";
 
-export default function ArticleList({topic}){
+export default function ArticleList(){
+    const {topic} = useParams();
     const [articles, setArticles] = useState([]);
-    const [isLoading, setisLoding] = useState(true);
-    useEffect(() => {
-         setisLoding(true);
+    const [article_id, setArticle_id] = useState([]);
+    const [isLoading, setisLoading] = useState(true);
+    
+useEffect(() => {
+         setisLoading(true);
         console.log("component mounted")
 
         api.getArticles(topic).then((data) => {
             setArticles(data)
 
-         setisLoding(false);
+         setisLoading(false);
 
         })
     }, [topic]);
-    return articles.map(({article_id, topic, author, body, created_at}) => {
         
         return (
-      
+            <div>
+             {articles.map(({article_id, topic, author, body, created_at}) => {
+
+
+            return(            
             <section className="Homepage_articleList">
-            
+            <Link to= {`/articles/${article_id}`}>     
+
                 <ArticleCard 
                 key={article_id}
                 topic={topic}
@@ -31,10 +39,16 @@ export default function ArticleList({topic}){
                 body={body}
                 created_at={created_at}
                     />
+            </Link> 
+            <button>
+                Display!
+            </button>
             </section>
+            )
+           
+                  })};
+  
+
+            </div>
              );
-        });
     }
-
-
-
